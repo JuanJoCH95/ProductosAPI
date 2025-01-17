@@ -28,4 +28,18 @@ public class ProductoRest {
         response = services.insertProducto(producto);
         return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
     }
+
+    @PostMapping("/edit")
+    public ResponseEntity<ResponseDTO> editarProducto(@RequestBody ProductoDTO producto) {
+        ResponseDTO response = new ResponseDTO();
+        response = services.updateProducto(producto);
+        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<ResponseDTO> eliminarProducto(@PathVariable Integer id) {
+        ResponseDTO response = new ResponseDTO();
+        response = services.deleteProducto(id);
+        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+    }
 }
