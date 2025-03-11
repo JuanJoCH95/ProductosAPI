@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class ProductoDTO {
+public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,13 +15,13 @@ public class ProductoDTO {
     private String nombre;
     private float precio;
 
-    public ProductoDTO(Integer idProducto, String nombre, float precio) {
+    public Producto(Integer idProducto, String nombre, float precio) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.precio = precio;
     }
 
-    public ProductoDTO() {
+    public Producto() {
         super();
     }
 

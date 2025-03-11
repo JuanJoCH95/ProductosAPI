@@ -1,7 +1,7 @@
 package com.co.productosapi.service;
 
-import com.co.productosapi.dto.ProductoDTO;
-import com.co.productosapi.dto.ResponseDTO;
+import com.co.productosapi.dto.Producto;
+import com.co.productosapi.dto.Response;
 import com.co.productosapi.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class ProductoService {
      * Metodo encargado de consultar todos los productos
      * @return
      */
-    public List<ProductoDTO> findProductos() {
+    public List<Producto> findProductos() {
         return repository.findAll();
     }
 
@@ -26,8 +26,8 @@ public class ProductoService {
      * Metodo encargado de insertar un nuevo producto
      * @param producto
      */
-    public ResponseDTO insertProducto(ProductoDTO producto) {
-        ResponseDTO response = new ResponseDTO();
+    public Response insertProducto(Producto producto) {
+        Response response = new Response();
 
         if(validateData(producto)) {
             repository.save(producto);
@@ -45,8 +45,8 @@ public class ProductoService {
      * @param producto
      * @return
      */
-    public ResponseDTO updateProducto(ProductoDTO producto) {
-        ResponseDTO response = new ResponseDTO();
+    public Response updateProducto(Producto producto) {
+        Response response = new Response();
 
         try {
             if(validateData(producto)) {
@@ -70,8 +70,8 @@ public class ProductoService {
      * @param id
      * @return
      */
-    public ResponseDTO deleteProducto(Integer id) {
-        ResponseDTO response = new ResponseDTO();
+    public Response deleteProducto(Integer id) {
+        Response response = new Response();
 
         try {
             repository.findById(id).get();
@@ -90,7 +90,7 @@ public class ProductoService {
      * @param producto
      * @return
      */
-    private Boolean validateData(ProductoDTO producto) {
+    private Boolean validateData(Producto producto) {
         return !producto.getNombre().isEmpty() && producto.getPrecio() != 0;
     }
 }

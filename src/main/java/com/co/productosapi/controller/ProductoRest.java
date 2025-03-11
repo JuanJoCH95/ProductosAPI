@@ -1,7 +1,7 @@
 package com.co.productosapi.controller;
 
-import com.co.productosapi.dto.ProductoDTO;
-import com.co.productosapi.dto.ResponseDTO;
+import com.co.productosapi.dto.Producto;
+import com.co.productosapi.dto.Response;
 import com.co.productosapi.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,28 +18,28 @@ public class ProductoRest {
     private ProductoService services;
 
     @GetMapping("/all")
-    public List<ProductoDTO> listarProductos() {
+    public List<Producto> listarProductos() {
         return services.findProductos();
     }
 
     @PostMapping("/new")
-    public ResponseEntity<ResponseDTO> crearProducto(@RequestBody ProductoDTO producto) {
-        ResponseDTO response = new ResponseDTO();
+    public ResponseEntity<Response> crearProducto(@RequestBody Producto producto) {
+        Response response = new Response();
         response = services.insertProducto(producto);
-        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+        return new ResponseEntity<Response>(response, HttpStatus.OK);
     }
 
     @PostMapping("/edit")
-    public ResponseEntity<ResponseDTO> editarProducto(@RequestBody ProductoDTO producto) {
-        ResponseDTO response = new ResponseDTO();
+    public ResponseEntity<Response> editarProducto(@RequestBody Producto producto) {
+        Response response = new Response();
         response = services.updateProducto(producto);
-        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+        return new ResponseEntity<Response>(response, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<ResponseDTO> eliminarProducto(@PathVariable Integer id) {
-        ResponseDTO response = new ResponseDTO();
+    public ResponseEntity<Response> eliminarProducto(@PathVariable Integer id) {
+        Response response = new Response();
         response = services.deleteProducto(id);
-        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+        return new ResponseEntity<Response>(response, HttpStatus.OK);
     }
 }

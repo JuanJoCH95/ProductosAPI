@@ -1,6 +1,6 @@
 package com.co.productosapi.dto;
 
-public class ResponseDTO {
+public class Response {
 
     private Integer codigo;
     private String descripcion;
