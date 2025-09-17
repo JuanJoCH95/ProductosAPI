@@ -22,6 +22,11 @@ public class ProductoRest {
         return services.findProductos();
     }
 
+    @GetMapping("/find/{id}")
+    public Producto buscarProducto(@PathVariable Integer id) {
+        return services.findProducto(id);
+    }
+
     @PostMapping("/new")
     public ResponseEntity<Response> crearProducto(@RequestBody Producto producto) {
         Response response = new Response();

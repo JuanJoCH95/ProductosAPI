@@ -14,11 +14,13 @@ public class Producto {
 
     private String nombre;
     private float precio;
+    private int cantidadDisponible;
 
-    public Producto(Integer idProducto, String nombre, float precio) {
+    public Producto(Integer idProducto, String nombre, float precio, int cantidadDisponible) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.precio = precio;
+        this.cantidadDisponible = cantidadDisponible;
     }
 
     public Producto() {
@@ -47,5 +49,13 @@ public class Producto {
 
     public void setPrecio(float precio) {
         this.precio = precio;
+    }
+
+    public int getCantidadDisponible() {
+        return cantidadDisponible;
+    }
+
+    public void setCantidadDisponible(int cantidadDisponible) {
+        this.cantidadDisponible = cantidadDisponible;
     }
 }

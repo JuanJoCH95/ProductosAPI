@@ -23,6 +23,15 @@ public class ProductoService {
     }
 
     /**
+     * Metodo encargado de consultar un producto especifico por su ID
+     * @param id
+     * @return
+     */
+    public Producto findProducto(Integer id) {
+        return repository.findById(id).get();
+    }
+
+    /**
      * Metodo encargado de insertar un nuevo producto
      * @param producto
      */
