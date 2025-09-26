@@ -1,4 +1,4 @@
-package com.co.productosapi.dto;
+package com.co.productosapi.model;
 
 public class Response {
 

@@ -1,7 +1,7 @@
 package com.co.productosapi.service;
 
-import com.co.productosapi.dto.Producto;
-import com.co.productosapi.dto.Response;
+import com.co.productosapi.model.Producto;
+import com.co.productosapi.model.Response;
 import com.co.productosapi.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
