@@ -95,7 +95,7 @@ public class ProductoService {
     }
 
     /**
-     * Metodo que revisa si los datos son validos
+     * Metodo encargado de validar la data ingresada
      * @param producto
      * @return
      */
