@@ -1,9 +1,6 @@
 package com.co.productosapi.controller;
 
 import com.co.productosapi.model.LoginRequest;
-import com.co.productosapi.model.Response;
-import com.co.productosapi.model.Usuarios;
-import com.co.productosapi.service.AuthenticationService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +19,6 @@ import org.springframework.web.bind.annotation.*;
 public class AuthenticationRest {
 
     @Autowired
-    private AuthenticationService services;
-
-    @Autowired
     private AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
@@ -37,16 +31,19 @@ public class AuthenticationRest {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             HttpSession session = request.getSession(true);
             session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext());
-            return new ResponseEntity<String>("Sesión iniciada exitosamente!", HttpStatus.OK);
-        } catch (AuthenticationException e) {
+            return new ResponseEntity<String>("Sesión iniciada exitosamente", HttpStatus.OK);
+        } catch (AuthenticationException ex) {
             return new ResponseEntity<String>("Credenciales no validas", HttpStatus.UNAUTHORIZED);
         }
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<Response> registro(@RequestBody Usuarios usuario) {
-        Response response = new Response();
-        response = services.insertUsuario(usuario);
-        return new ResponseEntity<Response>(response, HttpStatus.OK);
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        SecurityContextHolder.clearContext();
+        return ResponseEntity.ok("Sesión cerrada exitosamente");
     }
 }
