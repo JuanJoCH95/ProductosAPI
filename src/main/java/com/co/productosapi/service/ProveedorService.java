@@ -72,9 +72,12 @@ public class ProveedorService {
     }
 
     private Boolean validateData(Proveedor proveedor) {
+        boolean activoValido = proveedor.getActivo() != null && (proveedor.getActivo().equals("S") || proveedor.getActivo().equals("N"));
+        
         return proveedor.getNombre() != null && !proveedor.getNombre().isEmpty()
                 && proveedor.getCiudad() != null && !proveedor.getCiudad().isEmpty()
                 && proveedor.getTelefono() != null && !proveedor.getTelefono().isEmpty()
-                && proveedor.getEmail() != null && !proveedor.getEmail().isEmpty();
+                && proveedor.getEmail() != null && !proveedor.getEmail().isEmpty()
+                && activoValido;
     }
 }
